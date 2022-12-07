@@ -1,0 +1,75 @@
+.container{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    height:100vh;
+    width:100%;
+}
+
+.form-box{
+    width:380px;
+    height: auto;
+    background-color:#fff;
+    padding:20px;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-start;
+    /* opacity:0.5; */
+    /* line-height: 1.5em 0; */
+    border-radius:2%;
+    color: #000;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.form-title{
+    font-size: 30px;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 5%;
+}
+.input{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 20px 14px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: solid 1px rgba(142, 151, 167, 0.445);
+    line-height: 1.;
+    margin-bottom: 20px;
+}
+
+.form-button{
+    width: 100%;
+    padding: 20px 14px;
+    margin: 1.5em 0;
+    font-size: 100%;
+    font-weight: bold;
+}
+
+/* Drop down */
+.select {
+    appearance: none;
+    outline: 0;
+    font: inherit;
+
+    width: 100%;
+    height: 3em;
+    padding: 0 4em 0 1em;
+    /* margin: 1.5em 0; */
+    background: url(https://upload.wikimedia.org/wikipedia/commons/9/9d/Caret_down_font_awesome_whitevariation.svg)
+        no-repeat right 0.8em center / 1.4em,
+      linear-gradient(to left, rgb(68, 52, 129) 3em, rgba(255, 255, 255, 0.2) 3em);
+    color: rgb(0, 0, 0);
+    border-radius: 0.25em;
+    /* box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2); */
+    cursor: pointer;
+
+  }
+  
+.sneakbar{
+    padding: 20px 10px;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius:  5px;
+}
