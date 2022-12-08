@@ -2,11 +2,11 @@ import {USER, USER_ERROR, USER_LOADING } from '../actions/user.action';
 
 const initialState ={
     loading: false,
-    user: {},
+    users: {},
     error: null,
 }
 
-export const userReducer = (state = initialState, action) =>{
+export const usersReducer = (state = initialState, action) =>{
     switch (action.type) {
         case USER_LOADING:
             return {
@@ -17,7 +17,7 @@ export const userReducer = (state = initialState, action) =>{
             return {
                 ...state,
                 loading: false,
-                user: action.payload
+                users: action.payload
             }
         case USER_ERROR:
           return {

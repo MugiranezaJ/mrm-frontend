@@ -1,8 +1,23 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
 import AppRoutes from './routes';
+import { BrowserRouter } from 'react-router-dom';
+import NavBar from './components/NavBar';
+import { createBrowserHistory } from 'history';
 
 function App() {
+  const history = createBrowserHistory()
+  const [authenticated, setAuthenticated] = React.useState(false)
+  const [role, setRole] = React.useState('')
+  React.useEffect(() => {
+    const loggedInUser = localStorage.getItem("user");
+    const role = localStorage.getItem("role")
+    if (loggedInUser) {
+    setAuthenticated(true);
+    setRole(role)
+    }
+  }, []);
+
   return (
     // <div className="App">
     //   <header className="App-header">
@@ -20,7 +35,10 @@ function App() {
     //     </a>
     //   </header>
     // </div>
-    <AppRoutes/>
+    <BrowserRouter history={history}>
+        <NavBar authenticated={authenticated} setAuthenticated={setAuthenticated}/>
+        <AppRoutes authenticated={authenticated} setAuthenticated={setAuthenticated}/>
+    </BrowserRouter>
   );
 }
 
