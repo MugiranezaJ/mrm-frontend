@@ -8,14 +8,11 @@ export const usersAction = email => async (dispatch) => {
     dispatch({
        type: USER_LOADING 
       });
-
-    // const token = localStorage.getItem('KW_AT');
-
     return Axios.get('/user/all', {headers: {Authorization: email}})
     .then((res) => {
         dispatch({
             type: USER,
-            payload: res.data
+            payload: res.data?.data
         })
     })
     .catch(err=>{

@@ -2,16 +2,16 @@ import React, { useCallback, useEffect, useState } from "react";
 import { read, utils, writeFileXLSX } from 'xlsx';
 
 export default function Table({ tableData }) {
-  /* the component state is an array of presidents */
   const [pres, setPres] = useState([]);
+  const [sheetName, setSheetName] = useState('')
 
-  /* Fetch and update the state once */
   useEffect(() => { (async() => {
     const f = await (await fetch(tableData?.link)).arrayBuffer();
-    const wb = read(f); // parse the array buffer
-    const ws = wb.Sheets[wb.SheetNames[0]]; // get the first worksheet
-    const data = utils.sheet_to_json(ws); // generate objects
-    setPres(data); // update state
+    const wb = read(f); 
+    const ws = wb.Sheets[wb.SheetNames[0]]; 
+    const data = utils.sheet_to_json(ws);
+    setSheetName(wb.SheetNames[0])
+    setPres(data);
   })(); }, []);
 
   /* get state data and export to XLSX */
@@ -25,12 +25,14 @@ export default function Table({ tableData }) {
 
   return (
     <div className="table-wrapper">
-      <h1>{tableData?.name}</h1>
+      <h1 className="table-name">{sheetName}</h1>
       <table className="fl-table">
         <thead>
-          <th>2000</th>
-          <th>2001</th>
-          <th>2002</th>
+          <tr>
+            <th>2000</th>
+            <th>2001</th>
+            <th>2002</th>
+          </tr>
         </thead>
         <tbody>
         { /* generate row for each president */
@@ -43,7 +45,7 @@ export default function Table({ tableData }) {
           ))
           ) : (
             <tr className="no-data">
-              <td colSpan={3}>
+              <td colSpan={3} style={{margin: 'auto'}}>
                 No data
               </td>
             </tr>

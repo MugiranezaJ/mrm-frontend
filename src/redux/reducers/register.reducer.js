@@ -9,7 +9,6 @@ const initialState = {
 }
 
 export function registerReducer(state = initialState, action){
-  console.log(action.payload)
   switch(action.type){
     case REQUEST_SIGNUP:
       return {

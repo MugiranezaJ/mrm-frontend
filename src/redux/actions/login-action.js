@@ -9,9 +9,6 @@ export const loginAction = (userCredentials) => (dispatch) => {
   dispatch({ type: LOGIN_LOADING });
   return Axios.post(`/user/login`, userCredentials)
     .then((res) => {
-      console.log(res)
-      // localStorage.setItem("KW_AT", res.data.token);
-      console.log(res.data.data)
       localStorage.setItem("user", res.data.data.email)
       localStorage.setItem("role", res.data.data.role)
       dispatch({
@@ -20,17 +17,13 @@ export const loginAction = (userCredentials) => (dispatch) => {
       });
     })
     .catch((err) => {
-      console.log("#1........")
       if (err.message === "Network Error") {
-        console.log("#2.................")
         dispatch({
           type: USER_LOGIN,
           error: err.message,
         });
       }
       if (err.response) {
-        console.log("#3...............")
-        console.log(err.response)
         dispatch({
           type: USER_LOGIN,
           error: err.response.data.message,
@@ -39,8 +32,10 @@ export const loginAction = (userCredentials) => (dispatch) => {
     });
 };
 
+
 export const logoutAction = () => (dispatch) => {
-  localStorage.removeItem("KW_AT")
+  console.log("logout...............")
   localStorage.removeItem("user")
+  localStorage.removeItem("role")
   dispatch({ type: LOGOUT });
 };
