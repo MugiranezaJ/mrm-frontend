@@ -1,20 +1,21 @@
 import React from 'react'
-import { BrowserRouter, Routes, Route} from 'react-router-dom'
-import { createBrowserHistory } from 'history';
+import { Routes, Route} from 'react-router-dom'
 // import Home from '../components/views/Home'
 import Login from '../components/views/Login'
 import Register from '../components/views/Register'
+import Dashboard from '../components/views/Dashboard';
+import UsersList from '../components/views/UsersList';
 
-const history = createBrowserHistory()
-export default function AppRoutes(){
+
+export default function AppRoutes({authenticated, setAuthenticated}){
+ 
     return (
-        <BrowserRouter history={history}>
-            <Routes>
-                <Route exact path='/login' element={<Login/>}/>
-                <Route exact path='/register' element={<Register/>} />
-                {/* <Route exact path='/home' element={<Home/>} /> */}
-            </Routes>
-        </BrowserRouter>
+        <Routes>
+            <Route exact path='/dashboard' element={<Dashboard authenticated={authenticated}/>} />
+            <Route exact path='/all-users' element={<UsersList/>} />
+            <Route exact path='/login' element={<Login authenticated={authenticated} setAuthenticated={setAuthenticated}/>}/>
+            <Route exact path='/register' element={<Register setAuthenticated={setAuthenticated}  authenticated={authenticated}/>} />
+        </Routes>
     )
     
 }

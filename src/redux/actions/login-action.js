@@ -13,6 +13,7 @@ export const loginAction = (userCredentials) => (dispatch) => {
       // localStorage.setItem("KW_AT", res.data.token);
       console.log(res.data.data)
       localStorage.setItem("user", res.data.data.email)
+      localStorage.setItem("role", res.data.data.role)
       dispatch({
         type: USER_LOGIN,
         user: res.data.data,

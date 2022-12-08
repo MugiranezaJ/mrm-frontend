@@ -13,6 +13,7 @@ export const registerAction = (user) => async dispatch => {
   return Axios.post( `/user/register`, user)
     .then(res => {
       localStorage.setItem("user", res.data.data.email)
+      localStorage.setItem("role", res.data.data.role)
       dispatch({
         type: REQUEST_SUCCESS,
         payload: res.data.data

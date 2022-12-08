@@ -1,10 +1,9 @@
 import Axios from './axios-config'
-import axios from 'axios';
 export const USER = 'USER';
 export const USER_LOADING = 'USER_LOADING';
 export const USER_ERROR = 'USER_ERROR';
 
-export const userAction = email => async (dispatch) => {
+export const usersAction = email => async (dispatch) => {
 
     dispatch({
        type: USER_LOADING 
@@ -12,7 +11,7 @@ export const userAction = email => async (dispatch) => {
 
     // const token = localStorage.getItem('KW_AT');
 
-    return Axios.get('/user', {params: {email}})
+    return Axios.get('/user/all', {headers: {Authorization: email}})
     .then((res) => {
         dispatch({
             type: USER,
