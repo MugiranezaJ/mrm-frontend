@@ -1,15 +1,19 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom'
+import { logoutAction } from '../redux/actions/login-action';
 import Button from './Button';
-function NavBar({authenticated, setAuthenticated}) {
+function NavBar(props) {
+    console.log(props)
+    const {authenticated, setAuthenticated, doLogout } = props
     const [click, setClick] = React.useState(false);
   
     const handleClick = () => setClick(!click);
     const Close = () => setClick(false);
     const role = localStorage.getItem("role")
-    const isAdmin = (role == "admin")
+    const isAdmin = (role === "admin")
     const logout = () => {
-      localStorage.removeItem('user')
+      doLogout()
       setAuthenticated(false)
     }
     
@@ -28,7 +32,6 @@ function NavBar({authenticated, setAuthenticated}) {
                     <NavLink
                       exact
                       to="/dashboard"
-                      activeClassName="active"
                       className="nav-links"
                       onClick={click ? handleClick : null}
                     >
@@ -39,7 +42,6 @@ function NavBar({authenticated, setAuthenticated}) {
                     <NavLink
                       exact
                       to="/all-users"
-                      activeClassName="active"
                       className="nav-links"
                     onClick={click ? handleClick : null}
                     >
@@ -54,7 +56,6 @@ function NavBar({authenticated, setAuthenticated}) {
                     <NavLink
                       exact
                       to="/login"
-                      activeClassName="active"
                       className="nav-links"
                       onClick={click ? handleClick : null}
                     >
@@ -65,7 +66,6 @@ function NavBar({authenticated, setAuthenticated}) {
                     <NavLink
                       exact
                       to="/register"
-                      activeClassName="active"
                       className="nav-links"
                       onClick={click ? handleClick : null}
                     >
@@ -77,7 +77,7 @@ function NavBar({authenticated, setAuthenticated}) {
 
             </ul>
             <div className="nav-icon" onClick={handleClick}>
-              <i className={click ? "fa fa-times" : "fa fa-bars"}></i>
+              <i className={click ? "x" : "="}></i>
             </div>
           </div>
         </nav>
@@ -85,4 +85,13 @@ function NavBar({authenticated, setAuthenticated}) {
     );
 }
 
-export default NavBar
+const mapDispatchToProps = (dispatch) => {
+  return {
+    doLogout: () => {
+      dispatch(logoutAction())
+    },
+  }
+}
+
+export {NavBar};
+export default connect(null, mapDispatchToProps )(NavBar);
