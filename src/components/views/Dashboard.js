@@ -7,15 +7,15 @@ import Footer from "./Footer";
 function Dashboard(props){
   const role = localStorage.getItem("role")
     const patientData = {
-      link: "https://raw.githubusercontent.com/MugiranezaJ/mrm-frontend/dashboard/src/data/Patient_illnesses_from_2000-2002.xlsx",
+      link: "https://raw.githubusercontent.com/MugiranezaJ/mrm-frontend/main/src/data/Patient_illnesses_from_2000-2002.xlsx",
       name: "Patient"
     }
     const physicianData = {
-      link: "https://raw.githubusercontent.com/MugiranezaJ/mrm-frontend/dashboard/src/data/Physicians missions 2000 - 2002.xlsx",
+      link: "https://raw.githubusercontent.com/MugiranezaJ/mrm-frontend/main/src/data/Physicians_missions_2000-2002.xlsx",
       name: "Physician"
     }
     const pharmacistData = {
-      link:"https://github.com/MugiranezaJ/mrm-frontend/blob/715bd9262f14178200011171cddb4dc750373a4c/src/data/Most%20bough%20drugs%202000%20-%202002.xlsx",
+      link:"https://raw.githubusercontent.com/MugiranezaJ/mrm-frontend/main/src/data/Most_bough_drugs_2000-2002.xlsx",
       name: "Pharmacist"
     }
 

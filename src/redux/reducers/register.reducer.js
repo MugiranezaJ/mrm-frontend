@@ -1,3 +1,4 @@
+import { RESET_STATE } from '../actions/login-action'
 import { REQUEST_SIGNUP, REQUEST_SUCCESS, REQUEST_ERROR, CLOSE_SNACKBAR} from '../actions/signup-action'
 
 const initialState = {
@@ -29,11 +30,11 @@ export function registerReducer(state = initialState, action){
         errorOpen: true,
         error: action.error
       }
-    case CLOSE_SNACKBAR:
+      case RESET_STATE:
         return {
-            ...state,
-            errorOpen: false,
-            error: ''
+          ...state,
+          error: '',
+          errorOpen: false,
         }
     default:
       return state

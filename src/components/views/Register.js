@@ -5,7 +5,7 @@ import Button from '../Button';
 import InputField from '../InputField';
 import Select from '../Select';
 import { Link, Navigate } from 'react-router-dom'
-import { registerAction } from '../../redux/actions/signup-action';
+import { registerAction, resetState } from '../../redux/actions/signup-action';
 import SneakBar from '../SneakBar';
 import Footer from './Footer';
 
@@ -73,11 +73,11 @@ function Register(props){
                                     label={"Select User Role"}
                                     className={"select"}
                                     options={[
-                                                'patient',
-                                                'admin',
-                                                'pharmacist',
-                                                'physicist'
-                                            ]}
+                                        'patient',
+                                        'admin',
+                                        'pharmacist',
+                                        'physician'
+                                    ]}
                                 />
 
                             </div>
@@ -98,7 +98,10 @@ function Register(props){
                             
                             <Button
                                 type={"submit"}
-                                value={"Sign Up"}
+                                value={
+                                    props.register.loading 
+                                    ? "Signing up..."
+                                    : "Sign Up"}
                                 className={"form-button"}
                             />
                             {props.register.errorOpen && (
@@ -111,7 +114,7 @@ function Register(props){
                             }
                             <div>
                                 Already have an account?
-                                &nbsp;<Link to={'/login'}>Login</Link>
+                                &nbsp;<Link to={'/login'} onClick={props.doReset}>Login</Link>
                             </div>
                         </form>
                     </div>
@@ -125,6 +128,9 @@ const mapDispatchToProps = (dispatch) => {
     return {
       doRegister: (values) => {
         dispatch(registerAction(values))
+      },
+      doReset: () => {
+        dispatch(resetState())
       }
     }
   }

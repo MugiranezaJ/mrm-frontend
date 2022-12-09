@@ -32,6 +32,7 @@ export default function AppRoutes({authenticated, setAuthenticated}){
                     <Register
                         setAuthenticated={setAuthenticated} 
                         authenticated={authenticated}/>} />
+            <Route path='*' exact={true} element={<Dashboard/>} />
         </Routes>
     )
     

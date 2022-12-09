@@ -4,6 +4,7 @@ export const USER_LOGIN = "LOGIN";
 export const LOGIN_LOADING = "LOADING";
 export const CLOSE_SNACKBAR = "CLOSE_SNACKBAR";
 export const LOGOUT = "LOGOUT";
+export const RESET_STATE = "RESET_STATE"
 
 export const loginAction = (userCredentials) => (dispatch) => {
   dispatch({ type: LOGIN_LOADING });
@@ -39,3 +40,9 @@ export const logoutAction = () => (dispatch) => {
   localStorage.removeItem("role")
   dispatch({ type: LOGOUT });
 };
+
+export const resetState = () => (dispatch) => {
+  dispatch({
+    type: RESET_STATE
+  })
+}

@@ -1,11 +1,11 @@
 import React  from "react";
 
-const InputField = ({ value, label, name, placeholder, type, onChange, className }) => (
+const InputField = ({ label, name, placeholder, type, onChange, className }) => (
   <div className="form-group">
     {label && <label htmlFor="input-field">{label}</label>}
     <input
       type={type}
-    //   value={value}
+      required
       name={name}
       className={className}
       placeholder={placeholder}

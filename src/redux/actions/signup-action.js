@@ -4,6 +4,7 @@ export const REQUEST_SIGNUP = 'REQUEST_SIGNUP'
 export const REQUEST_SUCCESS = 'REQUEST_SUCCESS'
 export const REQUEST_ERROR = 'REQUEST_ERROR'
 export const CLOSE_SNACKBAR = 'CLOSE_SNACKBAR'
+export const RESET_STATE = 'RESET_STATE'
 
 
 export const registerAction = (user) => async dispatch => {
@@ -22,26 +23,23 @@ export const registerAction = (user) => async dispatch => {
       }
     )
     .catch(err => {
-        if (err.response){
-            dispatch({
-                type: REQUEST_ERROR,
-                error: err.response.data.message,
-              })
-          }else if(err.request){
-            dispatch({
-                type: REQUEST_ERROR,
-                error: err.request.data.error,
-              })
-          }else if(err.message){
-            dispatch({
-                type: REQUEST_ERROR,
-                error: err.message.data,
-              })     
-          }
+      if (err.message === "Network Error") {
+        dispatch({
+          type: REQUEST_ERROR,
+          error: err.message,
+        });
+      }
+      if (err.response) {
+        dispatch({
+          type: REQUEST_ERROR,
+          error: err.response.data.message,
+        });
+      }
     })
 }
-export const closeSnackbar = () => dispatch =>{
+
+export const resetState = () => (dispatch) => {
   dispatch({
-      type: CLOSE_SNACKBAR
-  });
+    type: RESET_STATE
+  })
 }
