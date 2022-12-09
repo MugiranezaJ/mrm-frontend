@@ -14,13 +14,12 @@ export default function Table({ tableData }) {
     setPres(data);
   })(); }, []);
 
-  /* get state data and export to XLSX */
-  // const exportFile = useCallback(() => {
-  //   const ws = utils.json_to_sheet(pres);
-  //   const wb = utils.book_new();
-  //   utils.book_append_sheet(wb, ws, "Data");
-  //   writeFileXLSX(wb, "SheetJSReactAoO.xlsx");
-  // }, [pres]);
+  const exportFile = useCallback(() => {
+    const ws = utils.json_to_sheet(pres);
+    const wb = utils.book_new();
+    utils.book_append_sheet(wb, ws, "Data");
+    writeFileXLSX(wb, `${sheetName}.xlsx`);
+  }, [pres]);
 
 
   return (
@@ -35,7 +34,7 @@ export default function Table({ tableData }) {
           </tr>
         </thead>
         <tbody>
-        { /* generate row for each president */
+        { 
           pres.length ? (pres.map(pres => (
             <tr key={Math.random()}>
               <td>{pres['2000']}</td>
@@ -52,11 +51,11 @@ export default function Table({ tableData }) {
           )
         }
         </tbody>
-        {/* <tfoot>
+        <tfoot>
           <td colSpan={2}>
-              <button onClick={exportFile}>Export XLSX</button>
+              <button onClick={exportFile} className={'download-button'}>Export Excel</button>
           </td>
-        </tfoot> */}
+        </tfoot>
       </table>
     </div>
   )
