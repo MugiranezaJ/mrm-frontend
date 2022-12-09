@@ -4,6 +4,7 @@ export const REQUEST_SIGNUP = 'REQUEST_SIGNUP'
 export const REQUEST_SUCCESS = 'REQUEST_SUCCESS'
 export const REQUEST_ERROR = 'REQUEST_ERROR'
 export const CLOSE_SNACKBAR = 'CLOSE_SNACKBAR'
+export const RESET_STATE = 'RESET_STATE'
 
 
 export const registerAction = (user) => async dispatch => {
@@ -36,8 +37,9 @@ export const registerAction = (user) => async dispatch => {
       }
     })
 }
-export const closeSnackbar = () => dispatch =>{
+
+export const resetState = () => (dispatch) => {
   dispatch({
-      type: CLOSE_SNACKBAR
-  });
+    type: RESET_STATE
+  })
 }

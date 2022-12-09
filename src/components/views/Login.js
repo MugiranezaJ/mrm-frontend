@@ -4,7 +4,7 @@ import '../../assets/styles/style.css';
 import Button from '../Button';
 import InputField from '../InputField';
 import { Link, Navigate } from 'react-router-dom'
-import { loginAction } from '../../redux/actions/login-action';
+import { loginAction, resetState } from '../../redux/actions/login-action';
 import SneakBar from '../SneakBar';
 import Footer from './Footer';
 
@@ -59,23 +59,16 @@ function Login(props){
                                 {(
                                     props.login.snackBarMessage
                                     ) && (
-                                        props.login.success ?
-                                    (<SneakBar
-                                        message={props.login.message}
-                                        className={"sneakbar"}
-                                        type={"success"}
-                                    />
-                                    ):(
                                         <SneakBar
                                             message={props.login.error}
                                             className={"sneakbar"}
                                             type={"error"}
                                         />
-                                    ))
+                                    )
                                 }
                                 <div>
                                     Don't have an account? 
-                                    &nbsp;<Link to={'/register'}>Register</Link>
+                                    &nbsp;<Link to={'/register'} onClick={props.doReset}>Register</Link>
                                 </div>
                             </form>
                         </div>
@@ -90,6 +83,9 @@ const mapDispatchToProps = (dispatch) => {
     return {
       doLogin: (values) => {
         dispatch(loginAction(values))
+      },
+      doReset: () => {
+        dispatch(resetState())
       }
     }
   }

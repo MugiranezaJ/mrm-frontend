@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { USER_LOGIN, LOGIN_LOADING, LOGOUT } from "../actions/login-action";
+import { USER_LOGIN, LOGIN_LOADING, LOGOUT, RESET_STATE } from "../actions/login-action";
 
 const initialState ={
   loading: false,
@@ -38,6 +38,12 @@ export const loginReducer = (state = initialState, action) =>{
       return {
         ...state,
         success: false,
+    };
+    case RESET_STATE:
+      return {
+        ...state,
+        snackBarMessage: false,
+        error: '',
       }
     default:
       return state;
