@@ -73,11 +73,11 @@ function Register(props){
                                     label={"Select User Role"}
                                     className={"select"}
                                     options={[
-                                                'patient',
-                                                'admin',
-                                                'pharmacist',
-                                                'physicist'
-                                            ]}
+                                        'patient',
+                                        'admin',
+                                        'pharmacist',
+                                        'physicist'
+                                    ]}
                                 />
 
                             </div>
@@ -98,7 +98,10 @@ function Register(props){
                             
                             <Button
                                 type={"submit"}
-                                value={"Sign Up"}
+                                value={
+                                    props.register.loading 
+                                    ? "Signing up..."
+                                    : "Sign Up"}
                                 className={"form-button"}
                             />
                             {props.register.errorOpen && (

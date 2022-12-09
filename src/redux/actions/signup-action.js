@@ -22,22 +22,18 @@ export const registerAction = (user) => async dispatch => {
       }
     )
     .catch(err => {
-        if (err.response){
-            dispatch({
-                type: REQUEST_ERROR,
-                error: err.response.data.message,
-              })
-          }else if(err.request){
-            dispatch({
-                type: REQUEST_ERROR,
-                error: err.request.data.error,
-              })
-          }else if(err.message){
-            dispatch({
-                type: REQUEST_ERROR,
-                error: err.message.data,
-              })     
-          }
+      if (err.message === "Network Error") {
+        dispatch({
+          type: REQUEST_ERROR,
+          error: err.message,
+        });
+      }
+      if (err.response) {
+        dispatch({
+          type: REQUEST_ERROR,
+          error: err.response.data.message,
+        });
+      }
     })
 }
 export const closeSnackbar = () => dispatch =>{

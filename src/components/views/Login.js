@@ -53,7 +53,7 @@ function Login(props){
 
                                 <Button
                                     type={"submit"}
-                                    value={"Login"}
+                                    value={props.login.loading ? "Logging in..." : "Login"}
                                     className={"form-button"}
                                 />
                                 {(
