@@ -76,7 +76,7 @@ function Register(props){
                                         'patient',
                                         'admin',
                                         'pharmacist',
-                                        'physicist'
+                                        'physician'
                                     ]}
                                 />
 

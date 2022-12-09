@@ -90,6 +90,8 @@
   background-color: #23486d;
   padding: 0.4em 1em;
   border: solid 1px;
+  border-radius: 5px;
+  color: #becac9;
 }
 
 /* Drop down */
