@@ -11,7 +11,7 @@ function NavBar(props) {
     const handleClick = () => setClick(!click);
     const Close = () => setClick(false);
     const role = localStorage.getItem("role")
-    const isAdmin = (role === "admin")
+    const isAdmin = (role === "Admin")
     const logout = () => {
       doLogout()
       setAuthenticated(false)
