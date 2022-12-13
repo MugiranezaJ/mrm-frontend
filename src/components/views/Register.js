@@ -17,6 +17,7 @@ function Register(props){
         if (user) {
             props.setAuthenticated(true);
         }
+        // eslint-disable-next-line
       }, [props.register.success]);
 
     if(props.authenticated){
@@ -62,8 +63,9 @@ function Register(props){
 
                             <div className='form-item-box-1'>
                                 <Select
-                                    name={"Gender"}
+                                    name={"gender"}
                                     label={"Select Gender"}
+                                    defaultValue={"Male"}
                                     className={"select"}
                                     options={['Male', 'Female']}
                                 />
@@ -72,11 +74,12 @@ function Register(props){
                                     name={"role"}
                                     label={"Select User Role"}
                                     className={"select"}
+                                    defaultValue={"Patient"}
                                     options={[
-                                        'patient',
-                                        'admin',
-                                        'pharmacist',
-                                        'physician'
+                                        'Admin',
+                                        'Patient',
+                                        'Pharmacist',
+                                        'Physician'
                                     ]}
                                 />
 

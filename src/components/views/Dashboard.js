@@ -25,9 +25,9 @@ function Dashboard(props){
       return(
           <>
             <div className="pages-container">
-                {["patient","admin"].includes(role) && <Table tableData={patientData}/>}
-                {["physician", "admin"].includes(role) && <Table tableData={physicianData}/>}
-                {["pharmacist", "admin"].includes(role) && <Table tableData={pharmacistData}/>}
+                {["Patient","Admin"].includes(role) && <Table tableData={patientData}/>}
+                {["Physician", "Admin"].includes(role) && <Table tableData={physicianData}/>}
+                {["Pharmacist", "Admin"].includes(role) && <Table tableData={pharmacistData}/>}
             </div>
             <Footer/>
           </>
