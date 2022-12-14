@@ -55,7 +55,7 @@ function Register(props){
                                 className={"input"}
                             />
                             <InputField
-                                type={"text"}
+                                type={"email"}
                                 name={"email"}
                                 label={"Email"}
                                 className={"input"}
@@ -89,6 +89,7 @@ function Register(props){
                                 type={"number"}
                                 name={"age"}
                                 label={"Age"}
+                                min={1}
                                 className={"input"}
                             />
 

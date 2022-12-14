@@ -1,6 +1,6 @@
 import React  from "react";
 
-const InputField = ({ label, name, placeholder, type, onChange, className }) => (
+const InputField = ({min, label, name, placeholder, type, onChange, className }) => (
   <div className="form-group">
     {label && <label htmlFor="input-field">{label}</label>}
     <input
@@ -9,6 +9,7 @@ const InputField = ({ label, name, placeholder, type, onChange, className }) => 
       name={name}
       className={className}
       placeholder={placeholder}
+      min={min}
       onChange={onChange}
     />
   </div>
